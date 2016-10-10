@@ -10,5 +10,13 @@ RSpec.feature "User can create a new project" do
     click_button "Create Project"
 
     expect(page).to have_content("Project Created Successfully")
+
+    project = Project.last #currently created project
+
+    #Expecting redirecting to the correct path
+    expect(page.current_url).to eq(project_url(project))
+
+    #Expecting page title must contains created project name
+    expect(page).to have_title "RspecFirstPart - #{project.name}"
   end
 end
