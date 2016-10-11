@@ -1,0 +1,17 @@
+<%= form_for @project do |form| %>
+
+  <% if @project.errors.any? %>
+    <ul style="color: #ff0000;">
+      <% @project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form.label "Project Name" %>
+  <%= form.text_field "name" %>
+  <%= form.label "Project Description" %>
+  <%= form.text_area "description" %>
+
+  <%= form.button "Update Project", type: "submit" %>
+<% end %>
