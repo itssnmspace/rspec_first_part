@@ -1,0 +1,13 @@
+<%= simple_form_for([project, ticket]) do |f| %>
+  <% if @ticket.errors.any? %>
+    <ul style="color: #ff0000;">
+      <% @ticket.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+  
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.button :submit, class: "btn-primary" %>
+<% end %>
