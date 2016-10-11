@@ -1,4 +1,8 @@
-<%= form_for @project do |form| %>
+<header>
+  <h1>New Project</h1>
+</header>
+
+<%= simple_form_for @project do |form| %>
 
   <% if @project.errors.any? %>
     <ul style="color: #ff0000;">
@@ -13,5 +17,5 @@
   <%= form.label "Project Description" %>
   <%= form.text_area "description" %>
 
-  <%= form.button "Create Project", type: "submit" %>
+  <%= form.button :submit, class: "btn-primary" %>
 <% end %>
