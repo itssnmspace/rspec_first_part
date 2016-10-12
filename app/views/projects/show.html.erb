@@ -22,6 +22,18 @@
 </header>
 
 
+<ul id="tickets">
+  <% @project.tickets.each do |ticket| %>
+  <li>
+    <p>
+      <h3>#<%= ticket.id %> - <%= link_to ticket.name, [@project, ticket] %></h3>
+      <%= ticket.description %>
+    </p>
+  </li>
+  <% end %>
+</ul>
+
+
 
 <%= content_for :page_title do %>
   <%= "RspecFirstPart - #{@project.name}" %>
