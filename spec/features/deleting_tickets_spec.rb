@@ -1,8 +1,9 @@
 require "rails_helper"
 
 RSpec.feature "Tickets can be deleted" do
+  let(:user) {FactoryGirl.create(:user)}
   let(:project) { FactoryGirl.create(:project) }
-  let(:ticket) { FactoryGirl.create(:ticket, project_id: project.id) }
+  let(:ticket) { FactoryGirl.create(:ticket, project_id: project.id, user_id: user.id) }
 
   before do
     visit project_ticket_path(project, ticket)

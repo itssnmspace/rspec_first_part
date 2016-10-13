@@ -1,7 +1,10 @@
 require "rails_helper"
 
 RSpec.feature "User can create a ticket under project" do
+  let!(:user) {FactoryGirl.create(:user)}
+
   before do
+    login_as(user)
     project = FactoryGirl.create(:project, name: "Cherry")
     visit project_path(project)
     click_link "New Ticket"
@@ -15,6 +18,8 @@ RSpec.feature "User can create a ticket under project" do
     click_button "Create Ticket"
 
     expect(page).to have_content("Ticket has been created.")
+    expect(page).to have_content "Author"
+    expect(page).to have_content "#{user.email}"
   end
 
 
@@ -26,3 +31,6 @@ RSpec.feature "User can create a ticket under project" do
     expect(page).to have_content("Description can't be blank")
   end
 end
+
+
+# bundle exec rspec spec/features/creating_tickets_spec.rb

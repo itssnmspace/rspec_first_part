@@ -1,13 +1,15 @@
 require "rails_helper"
 
 RSpec.feature "User can view the project" do
+  
+  let(:user) {FactoryGirl.create(:user)}
 
   before do
     apple = FactoryGirl.create(:project, name: "Apple", description: "This is fruit")
-    FactoryGirl.create(:ticket, project_id: apple.id, name: "Ticket for Apple", description: "You are able to purchase Apple")
+    FactoryGirl.create(:ticket, project_id: apple.id, user_id: user.id, name: "Ticket for Apple", description: "You are able to purchase Apple")
 
     potato = FactoryGirl.create(:project, name: "Potato", description: "This is a vegetable")
-    FactoryGirl.create(:ticket, project_id: potato.id, name: "Ticket for Potato", description: "You are able to purchase Potato")
+    FactoryGirl.create(:ticket, project_id: potato.id, user_id: user.id, name: "Ticket for Potato", description: "You are able to purchase Potato")
 
     visit "/"
   end
