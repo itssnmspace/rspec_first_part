@@ -6,5 +6,9 @@ FactoryGirl.define do
     trait :admin do
       admin true
     end
+
+    trait :normal do
+      admin false
+    end  
   end
 end
